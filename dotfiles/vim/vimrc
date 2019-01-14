@@ -21,20 +21,27 @@ call plug#end()
 " GENERAL CONFIGURATIONS
 " ----------------------
 set nocompatible                                " Don't make vim vi-compatible
-syntax on					" turn on syntax highlighting
+syntax enable					" turn on syntax highlighting
 filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
 set autoindent                                  " Copy indent to new line
 set backspace=indent,eol,start                  " Allow backspace in Insert Mode
-set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
+set cursorline					" highlight current line
+set encoding=utf8                               " Set utf8 as standard encoding and en_US as standard language
+set inccommand=nosplit                          " highlight text while using the substitution command
+set incsearch                                   " highlight search during typing
+set lazyredraw                                  " Don't redraw while executing macros
+set magic                                       " For regular expressions
+set noerrorbells                                " Disable error bells
+set novisualbell                                " Disable visual error indicator
+set nohlsearch                                  " turn off search highlighting
+set noshowmode                                  " don't show vim's default status message
+set nowrap					" don't wrap long lines
 set number                                      " Enable line numbering
 set relativenumber				" show line number relative to cursor
-set cursorline					" highlight current line
-set nowrap					" don't wrap long lines
-set incsearch                                   " highlight search during typing
-set inccommand=nosplit                          " highlight text while using the substitution command
-set noshowmode                                  " don't show vim's default status message
-set noerrorbells                                " Disable error bells
 set scrolloff=5                                 " Keep the cursor 5 lines above & below the screen when scrolling
+set smartindent                                 " Do smart autoindenting when starting a new line
+set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
+set wildmenu                                    " Visual autocomplete for command menu
 
 if (has("termguicolors"))                       " Enable true colors
   set termguicolors
