@@ -1,9 +1,11 @@
-" ==============================================================================================================
-" VIM CONFIG
-" ==============================================================================================================
+" ===========================================================
+" | PERSONAL VIM CONFIG | https://github.com/K750i/dotfiles |
+" ===========================================================
 
-" vim-plug configurations
+" -------------------------------------------------
+" VIM-PLUG CONFIGURATIONS
 " reload .vimrc and :PlugInstall to install plugins
+" -------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
@@ -15,39 +17,49 @@ Plug 'machakann/vim-highlightedyank'
 
 call plug#end()
 
-" Enable true colors
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Material theme settings
-let g:material_theme_sytle = 'palenight'
-let g:material_terminal_italics = 1
-
-" set lightline color scheme
-let g:lightline = {'colorscheme': 'wombat'}
-
-" set buffer color scheme
-colorscheme palenight
-set background=dark
-
-" General Configuration
-set nocompatible
+" ----------------------
+" GENERAL CONFIGURATIONS
+" ----------------------
+set nocompatible                                " Don't make vim vi-compatible
 syntax on					" turn on syntax highlighting
-filetype plugin indent on
-set backspace=indent,eol,start
+filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
+set autoindent                                  " Copy indent to new line
+set backspace=indent,eol,start                  " Allow backspace in Insert Mode
 set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
-set number
-set hidden
+set number                                      " Enable line numbering
 set relativenumber				" show line number relative to cursor
 set cursorline					" highlight current line
 set nowrap					" don't wrap long lines
 set incsearch                                   " highlight search during typing
-set inccommand=nosplit                          " highlight text during substitution
+set inccommand=nosplit                          " highlight text while using the substitution command
 set noshowmode                                  " don't show vim's default status message
+set noerrorbells                                " Disable error bells
+set scrolloff=5                                 " Keep the cursor 5 lines above & below the screen when scrolling
 
+if (has("termguicolors"))                       " Enable true colors
+  set termguicolors
+endif
+
+" -----------------------
+" MATERIAL THEME SETTINGS
+" -----------------------
+let g:material_theme_sytle = 'palenight'
+let g:material_terminal_italics = 1
+
+" --------------------------
+" SET LIGHTLINE COLOR SCHEME
+" --------------------------
+let g:lightline = {'colorscheme': 'wombat'}
+
+" -----------------------
+" SET BUFFER COLOR SCHEME
+" -----------------------
+colorscheme palenight
+set background=dark
+
+" ------------------
 " CUSTOM KEY MAPPING
-"let mapleader = "\<space>"                     " Use spacebar as leader (disabled)
+" ------------------
 nmap <leader>vi :tabedit ~/.vimrc<cr>
 nmap <leader>so :source ~/.vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
