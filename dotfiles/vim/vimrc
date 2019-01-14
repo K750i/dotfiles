@@ -1,0 +1,59 @@
+" ==============================================================================================================
+" VIM CONFIG
+" ==============================================================================================================
+
+" vim-plug configurations
+" reload .vimrc and :PlugInstall to install plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'machakann/vim-highlightedyank'
+
+call plug#end()
+
+" Enable true colors
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Material theme settings
+let g:material_theme_sytle = 'palenight'
+let g:material_terminal_italics = 1
+
+" set lightline color scheme
+let g:lightline = {'colorscheme': 'wombat'}
+
+" set buffer color scheme
+colorscheme palenight
+set background=dark
+
+" General Configuration
+set nocompatible
+syntax on					" turn on syntax highlighting
+filetype plugin indent on
+set backspace=indent,eol,start
+set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
+set number
+set hidden
+set relativenumber				" show line number relative to cursor
+set cursorline					" highlight current line
+set nowrap					" don't wrap long lines
+set incsearch                                   " highlight search during typing
+set inccommand=nosplit                          " highlight text during substitution
+set noshowmode                                  " don't show vim's default status message
+
+" CUSTOM KEY MAPPING
+"let mapleader = "\<space>"                     " Use spacebar as leader (disabled)
+nmap <leader>vi :tabedit ~/.vimrc<cr>
+nmap <leader>so :source ~/.vimrc<cr>
+nmap <leader>rp :w<cr>:!python3 %<cr>
+
+nmap <c-s> :w<cr>
+
+imap wf <esc>
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
