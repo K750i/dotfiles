@@ -47,16 +47,16 @@ if (has("termguicolors"))                       " Enable true colors
   set termguicolors
 endif
 
+" --------------------------
+" SET LIGHTLINE COLOR SCHEME
+" --------------------------
+let g:lightline = {'colorscheme': 'wombat'}
+
 " -----------------------
 " MATERIAL THEME SETTINGS
 " -----------------------
 let g:material_theme_sytle = 'palenight'
 let g:material_terminal_italics = 1
-
-" --------------------------
-" SET LIGHTLINE COLOR SCHEME
-" --------------------------
-let g:lightline = {'colorscheme': 'wombat'}
 
 " -----------------------
 " SET BUFFER COLOR SCHEME
@@ -67,8 +67,8 @@ set background=dark
 " ------------------
 " CUSTOM KEY MAPPING
 " ------------------
-nmap <leader>vi :tabedit ~/.vimrc<cr>
-nmap <leader>so :source ~/.vimrc<cr>
+nmap <leader>vi :tabedit ~/Documents/code/dotfiles/vim/vimrc<cr>
+nmap <leader>so :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
 
 nmap <c-s> :w<cr>
