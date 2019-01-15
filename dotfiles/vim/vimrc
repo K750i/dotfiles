@@ -20,18 +20,20 @@ call plug#end()
 " ----------------------
 " GENERAL CONFIGURATIONS
 " ----------------------
-set nocompatible                                " Don't make vim vi-compatible
 syntax enable					" turn on syntax highlighting
 filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
 set autoindent                                  " Copy indent to new line
 set backspace=indent,eol,start                  " Allow backspace in Insert Mode
 set cursorline					" highlight current line
 set encoding=utf8                               " Set utf8 as standard encoding and en_US as standard language
+set history=500                                 " Store a ton more history than default
 set inccommand=nosplit                          " highlight text while using the substitution command
 set incsearch                                   " highlight search during typing
 set lazyredraw                                  " Don't redraw while executing macros
 set magic                                       " For regular expressions
+set mouse=a                                     " Enable mouse usage (all modes)
 set noerrorbells                                " Disable error bells
+set nojoinspaces                                " Prevents inserting two spaces after punctuation on a join (J)
 set novisualbell                                " Disable visual error indicator
 set nohlsearch                                  " turn off search highlighting
 set noshowmode                                  " don't show vim's default status message
@@ -39,8 +41,9 @@ set nowrap					" don't wrap long lines
 set number                                      " Enable line numbering
 set relativenumber				" show line number relative to cursor
 set scrolloff=5                                 " Keep the cursor 5 lines above & below the screen when scrolling
-set smartindent                                 " Do smart autoindenting when starting a new line
 set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
+set splitbelow                                  " Put new split window on the bottom of current window
+set splitright                                  " Put new split window on the right of current window
 set wildmenu                                    " Visual autocomplete for command menu
 
 if (has("termguicolors"))                       " Enable true colors
@@ -67,11 +70,11 @@ set background=dark
 " ------------------
 " CUSTOM KEY MAPPING
 " ------------------
+let mapleader=","
 nmap <leader>vi :tabedit ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>so :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
-
-nmap <c-s> :w<cr>
+nmap <leader>sv :w<cr>
 
 imap wf <esc>
 
