@@ -30,6 +30,7 @@ set cursorline					" highlight current line
 set encoding=utf8                               " Set utf8 as standard encoding and en_US as standard language
 set hidden                                      " Possibility to have more than one unsaved buffers
 set history=500                                 " Store a ton more history than default
+set ignorecase                                  " Case insensitive search
 set inccommand=nosplit                          " highlight text while using the substitution command
 set incsearch                                   " Incremental and highlight search during typing
 set lazyredraw                                  " Don't redraw while executing macros
@@ -38,12 +39,13 @@ set mouse=a                                     " Enable mouse usage (all modes)
 set noerrorbells                                " Disable error bells
 set nojoinspaces                                " Prevents inserting two spaces after punctuation on a join (J)
 set novisualbell                                " Disable visual error indicator
-set nohlsearch                                  " turn off search highlighting
+set hlsearch                                    " turn on search highlighting
 set noshowmode                                  " don't show vim's default status message
 set nowrap					" don't wrap long lines
 set number                                      " Enable line numbering
 set relativenumber				" show line number relative to cursor
 set scrolloff=3                                 " Keep the cursor 3 lines above & below the screen when scrolling
+set smartcase                                   " Override 'ignorecase' if search contains uppercase characters.
 set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
 set splitbelow                                  " Put new split window on the bottom of current window
 set splitright                                  " Put new split window on the right of current window
@@ -79,6 +81,6 @@ nmap <leader>so :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
 nmap <leader>sv :w<cr>
 
+nnoremap <silent> <c-l> :<c-u>nohlsearch<cr><c-l>
 imap wf <esc>
 
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
