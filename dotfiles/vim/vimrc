@@ -84,3 +84,9 @@ nmap <leader>sv :w<cr>
 nnoremap <silent> <c-l> :<c-u>nohlsearch<cr><c-l>
 imap wf <esc>
 
+" ---------
+" AUTOGROUP
+" ---------
+augroup configgroup
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup end
