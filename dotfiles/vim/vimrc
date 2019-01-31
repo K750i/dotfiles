@@ -82,7 +82,11 @@ nmap <leader>so :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
 nmap <leader>sv :w<cr>
 
-nnoremap <silent> <c-l> :<c-u>nohlsearch<cr><c-l>
+nnoremap <silent> <c-\> :<c-u>nohlsearch<cr><c-l>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
 imap wf <esc>
 
 " ---------
