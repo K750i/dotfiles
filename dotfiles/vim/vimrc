@@ -15,7 +15,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'javascript']}
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -32,7 +33,6 @@ set encoding=utf8                               " Set utf8 as standard encoding 
 set hidden                                      " Possibility to have more than one unsaved buffers
 set history=500                                 " Store a ton more history than default
 set ignorecase                                  " Case insensitive search
-set inccommand=nosplit                          " highlight text while using the substitution command
 set incsearch                                   " Incremental and highlight search during typing
 set lazyredraw                                  " Don't redraw while executing macros
 set magic                                       " For regular expressions
@@ -52,8 +52,12 @@ set splitbelow                                  " Put new split window on the bo
 set splitright                                  " Put new split window on the right of current window
 set wildmenu                                    " Visual autocomplete for command menu
 
-if (has("termguicolors"))                       " Enable true colors
-  set termguicolors
+if has("nvim")
+  set inccommand=nosplit                        " highlight text while using the substitution command
+endif
+
+if has("termguicolors")
+  set termguicolors                             " Enable true colors
 endif
 
 " --------------------------
