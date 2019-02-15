@@ -17,6 +17,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'javascript']}
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -76,6 +77,12 @@ let g:material_terminal_italics = 1
 " -----------------------
 colorscheme palenight
 set background=dark
+
+" --------------------
+" EMMET CUSTOM SETTING
+" --------------------
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = { 'javascript.jsx': { 'extends': 'jsx' } }
 
 " ------------------
 " CUSTOM KEY MAPPING
