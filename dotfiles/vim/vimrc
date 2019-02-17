@@ -18,6 +18,11 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'javascript']}
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'sirver/ultisnips'
+Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 
 call plug#end()
 
@@ -84,6 +89,11 @@ set background=dark
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = { 'javascript.jsx': { 'extends': 'jsx' } }
 
+" -----------------------
+" PRETTIER CUSTOM SETTING
+" -----------------------
+let g:prettier#autoformat = 0
+
 " ------------------
 " CUSTOM KEY MAPPING
 " ------------------
@@ -104,5 +114,7 @@ imap wf <esc>
 " AUTOGROUP
 " ---------
 augroup configgroup
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end
