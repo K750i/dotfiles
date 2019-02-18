@@ -22,7 +22,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'sirver/ultisnips'
-Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -93,6 +93,11 @@ let g:user_emmet_settings = { 'javascript.jsx': { 'extends': 'jsx' } }
 " PRETTIER CUSTOM SETTING
 " -----------------------
 let g:prettier#autoformat = 0
+
+" ------------------------
+" ULTISNIPS CUSTOM SETTING
+" ------------------------
+let g:UltiSnipsEditSplit = 'vertical'
 
 " ------------------
 " CUSTOM KEY MAPPING
