@@ -60,10 +60,15 @@ set wildmenu                                    " Visual autocomplete for comman
 
 if has("nvim")
   set inccommand=nosplit                        " highlight text while using the substitution command
+  tnoremap <esc> <c-\><c-n>
 endif
 
 if has("termguicolors")
   set termguicolors                             " Enable true colors
+endif
+
+if has('mac')
+  let g:python3_host_prog = '/usr/local/bin/python3'
 endif
 
 " --------------------------
@@ -114,6 +119,9 @@ nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 imap wf <esc>
+
+" expands the path to the active buffer with %%
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " ---------
 " AUTOGROUP
