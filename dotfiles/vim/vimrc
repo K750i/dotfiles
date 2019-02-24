@@ -109,11 +109,22 @@ let g:UltiSnipsEditSplit = 'vertical'
 " ------------------
 " CUSTOM KEY MAPPING
 " ------------------
+
+" expands the path to the active buffer with %%
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 let mapleader=","
-nmap <leader>vi :tabedit ~/Documents/code/dotfiles/vim/vimrc<cr>
-nmap <leader>so :source ~/Documents/code/dotfiles/vim/vimrc<cr>
+nmap <leader>rc :tabedit ~/Documents/code/dotfiles/vim/vimrc<cr>
+nmap <leader>ce :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>rp :w<cr>:!python3 %<cr>
-nmap <leader>sv :w<cr>
+nmap <leader>s :w<cr>
+nmap <leader>q :q<cr>
+
+nmap <leader>dd :e<space>
+nmap <leader>dw :e %%
+nmap <leader>ds :sp %%
+nmap <leader>dv :vsp %%
+nmap <leader>dt :tabe %%
 
 nnoremap <silent> <c-\> :<c-u>nohlsearch<cr><c-l>
 nnoremap <c-l> <c-w><c-l>
@@ -122,8 +133,6 @@ nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 imap wf <esc>
 
-" expands the path to the active buffer with %%
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " ---------
 " AUTOGROUP
