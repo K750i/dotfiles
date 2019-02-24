@@ -69,6 +69,8 @@ endif
 
 if has('mac')
   let g:python3_host_prog = '/usr/local/bin/python3'
+elseif has('win32')
+  let g:python3_host_prog = $HOME.'\AppData\Local\Programs\Python\Python37-32\python'
 endif
 
 " --------------------------
