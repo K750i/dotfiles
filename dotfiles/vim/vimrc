@@ -73,6 +73,18 @@ elseif has('win32')
   let g:python3_host_prog = $HOME.'\AppData\Local\Programs\Python\Python37-32\python'
 endif
 
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  " Uncomment to have 'bomb' on by default for new files.
+  " Note, this will not apply to the first, empty buffer created at Vim startup.
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 " --------------------------
 " SET LIGHTLINE COLOR SCHEME
 " --------------------------
@@ -126,12 +138,13 @@ nmap <leader>ds :sp %%
 nmap <leader>dv :vsp %%
 nmap <leader>dt :tabe %%
 
-nnoremap <silent> <c-\> :<c-u>nohlsearch<cr><c-l>
+nnoremap <silent> <space>n :<c-u>nohlsearch<cr><c-l>
+nnoremap <space><space> <c-^>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
-imap wf <esc>
+inoremap wf <esc>
 
 
 " ---------
