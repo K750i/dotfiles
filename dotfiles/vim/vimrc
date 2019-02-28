@@ -151,8 +151,11 @@ nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
+nnoremap j gj
+nnoremap k gk
 inoremap wf <esc>
-
+inoremap <c-e> <esc>A
+inoremap <c-u> <esc>gUaWEa
 
 " ---------
 " AUTOGROUP
