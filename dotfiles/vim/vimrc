@@ -2,10 +2,8 @@
 " | PERSONAL VIM CONFIG | https://github.com/K750i/dotfiles |
 " ===========================================================
 
-" -------------------------------------------------
-" VIM-PLUG CONFIGURATIONS
-" reload .vimrc and :PlugInstall to install plugins
-" -------------------------------------------------
+" VIM-PLUG CONFIGURATIONS ------------------------------------------------- {{{
+" RELOAD .vimrc AND :PlugInstall TO INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
@@ -26,9 +24,9 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
-" ----------------------
-" GENERAL CONFIGURATIONS
-" ----------------------
+" }}}
+
+" GENERAL CONFIGURATIONS -------------------------------------------------- {{{
 filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
 runtime macros/matchit.vim                      " Extended matching with '%'
 syntax on					" turn on syntax highlighting
@@ -86,49 +84,49 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-" -----------------------------------------------------------------------
-" TWEAKS FOR BROWSING WITH NETRW - check *netrw-browse-maps* for mappings
-" -----------------------------------------------------------------------
+" }}} 
+
+" TWEAKS FOR BROWSING WITH NETRW ------------------------------------------ {{{
+" CHECK *netrw-browse-maps* FOR MAPPINGS
 let g:netrw_banner=0                  " disable banner
 let g:netrw_liststyle=3               " tree view
 
-" --------------------------
-" SET LIGHTLINE COLOR SCHEME
-" --------------------------
+" }}}
+
+" SET LIGHTLINE COLOR SCHEME ---------------------------------------------- {{{
 let g:lightline = {'colorscheme': 'wombat'}
 
-" -----------------------
-" MATERIAL THEME SETTINGS
-" -----------------------
+" }}}
+
+" MATERIAL THEME SETTINGS ------------------------------------------------- {{{
 let g:material_theme_sytle = 'palenight'
 let g:material_terminal_italics = 1
 
-" -----------------------
-" SET BUFFER COLOR SCHEME
-" -----------------------
+" }}}
+
+" SET BUFFER COLOR SCHEME ------------------------------------------------- {{{
 colorscheme palenight
 set background=dark
 
-" --------------------
-" EMMET CUSTOM SETTING
-" --------------------
+" }}}
+
+" EMMET CUSTOM SETTING ---------------------------------------------------- {{{
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = { 'javascript.jsx': { 'extends': 'jsx' } }
 
-" -----------------------
-" PRETTIER CUSTOM SETTING
-" -----------------------
+" }}}
+
+" PRETTIER CUSTOM SETTING ------------------------------------------------- {{{
 let g:prettier#autoformat = 0
 
-" ------------------------
-" ULTISNIPS CUSTOM SETTING
-" ------------------------
+" }}}
+
+" ULTISNIPS CUSTOM SETTING ------------------------------------------------ {{{
 let g:UltiSnipsEditSplit = 'vertical'
 
-" ------------------
-" CUSTOM KEY MAPPING
-" ------------------
+" }}}
 
+" CUSTOM KEY MAPPING ------------------------------------------------------ {{{
 " expands the path to the active buffer with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -157,11 +155,29 @@ inoremap wf <esc>
 inoremap <c-e> <esc>A
 inoremap <c-u> <esc>gUaWEa
 
-" ---------
-" AUTOGROUP
-" ---------
+"Make operation pending commands for parentheses, brackets & braces easier
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in) :<c-u>normal! f(vi(<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap in] :<c-u>normal! f[vi[<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap in} :<c-u>normal! f{vi{<cr>
+
+" }}}
+
+" AUTOCOMMAND GROUPING ---------------------------------------------------- {{{
+" Vimscript file settings ------------------------------------------------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup end
+" }}} 
+
+" File type settings ------------------------------------------------------ {{{
 augroup configgroup
   autocmd!
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end
+" }}}
+" }}}
