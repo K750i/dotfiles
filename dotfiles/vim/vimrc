@@ -1,8 +1,13 @@
-" ===========================================================
-" | PERSONAL VIM CONFIG | https://github.com/K750i/dotfiles |
-" ===========================================================
+ " ==================================================================
+ "            _   ___         _____          ____     
+ "           | | / (_)_ _    / ___/__  ___  / _(_)__ _
+ "           | |/ / /  ' \  / /__/ _ \/ _ \/ _/ / _ `/
+ "           |___/_/_/_/_/  \___/\___/_//_/_//_/\_, /   
+ "           https://github.com/K750i/dotfiles /___/  
+ "
+ " ==================================================================
 
-" VIM-PLUG CONFIGURATIONS ------------------------------------------------- {{{
+" PLUG-INS ---------------------------------------------------------------- {{{
 " RELOAD .vimrc AND :PlugInstall TO INSTALL PLUGINS
 call plug#begin('~/.vim/plugged')
 
@@ -25,8 +30,7 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 " }}}
-
-" GENERAL CONFIGURATIONS -------------------------------------------------- {{{
+" GENERAL ----------------------------------------------------------------- {{{
 filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
 runtime macros/matchit.vim                      " Extended matching with '%'
 syntax on					" turn on syntax highlighting
@@ -85,47 +89,39 @@ if has("multi_byte")
 endif
 
 " }}} 
+" COLOR SCHEME ------------------------------------------------------------ {{{
+" THEME ------------------------------------------------------------------- {{{
+colorscheme palenight
+set background=dark
 
-" TWEAKS FOR BROWSING WITH NETRW ------------------------------------------ {{{
+let g:material_theme_sytle = 'palenight'
+let g:material_terminal_italics = 1
+
+" }}}
+" LIGHTLINE --------------------------------------------------------------- {{{
+let g:lightline = {'colorscheme': 'wombat'}
+
+" }}}
+" }}}
+" NETRW ------------------------------------------------------------------- {{{
 " CHECK *netrw-browse-maps* FOR MAPPINGS
 let g:netrw_banner=0                  " disable banner
 let g:netrw_liststyle=3               " tree view
 
 " }}}
-
-" SET LIGHTLINE COLOR SCHEME ---------------------------------------------- {{{
-let g:lightline = {'colorscheme': 'wombat'}
-
-" }}}
-
-" MATERIAL THEME SETTINGS ------------------------------------------------- {{{
-let g:material_theme_sytle = 'palenight'
-let g:material_terminal_italics = 1
-
-" }}}
-
-" SET BUFFER COLOR SCHEME ------------------------------------------------- {{{
-colorscheme palenight
-set background=dark
-
-" }}}
-
-" EMMET CUSTOM SETTING ---------------------------------------------------- {{{
+" EMMET ------------------------------------------------------------------- {{{
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = { 'javascript.jsx': { 'extends': 'jsx' } }
 
 " }}}
-
-" PRETTIER CUSTOM SETTING ------------------------------------------------- {{{
+" PRETTIER ---------------------------------------------------------------- {{{
 let g:prettier#autoformat = 0
 
 " }}}
-
-" ULTISNIPS CUSTOM SETTING ------------------------------------------------ {{{
+" ULTISNIPS --------------------------------------------------------------- {{{
 let g:UltiSnipsEditSplit = 'vertical'
 
 " }}}
-
 " CUSTOM KEY MAPPING ------------------------------------------------------ {{{
 " expands the path to the active buffer with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -158,13 +154,14 @@ inoremap <c-u> <esc>gUaWEa
 "Make operation pending commands for parentheses, brackets & braces easier
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in) :<c-u>normal! f(vi(<cr>
+omap inb in(
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in] :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in} :<c-u>normal! f{vi{<cr>
+omap inB in{
 
 " }}}
-
 " AUTOCOMMAND GROUPING ---------------------------------------------------- {{{
 " Vimscript file settings ------------------------------------------------- {{{
 augroup filetype_vim
