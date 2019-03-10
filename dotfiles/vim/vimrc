@@ -53,7 +53,8 @@ set noshowmode                                  " don't show vim's default statu
 set nowrap					" don't wrap long lines
 set number                                      " Enable line numbering
 set relativenumber				" show line number relative to cursor
-set scrolloff=3                                 " Keep the cursor 3 lines above & below the screen when scrolling
+set scrolloff=3                                 " Keep cursor 3 lines above & below the screen when scrolling
+set sidescrolloff=10                            " Keep cursor 10 chars to the left or right when scrolling horizontally
 set smartcase                                   " Override 'ignorecase' if search contains uppercase characters.
 set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
 set splitbelow                                  " Put new split window on the bottom of current window
@@ -122,7 +123,7 @@ let g:prettier#autoformat = 0
 let g:UltiSnipsEditSplit = 'vertical'
 
 " }}}
-" CUSTOM KEY MAPPING ------------------------------------------------------ {{{
+" MAPPINGS ---------------------------------------------------------------- {{{
 " expands the path to the active buffer with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -140,13 +141,19 @@ nmap <leader>dv :vsp %%
 nmap <leader>dt :tabe %%
 
 nnoremap <silent> <cr> :<c-u>nohlsearch<cr><c-l>
+" Buffer operations
 nnoremap <space><space> <c-^>
+nnoremap <space>l :execute "rightbelow vsplit " . bufname("#")<cr>
+nnoremap <space>j :execute "rightbelow split " . bufname("#")<cr>
+
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
-nnoremap j gj
-nnoremap k gk
+" Change to display line movements unless preceded by [count]
+" Automatically save movements larger than 5 lines to the jumplist
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 inoremap wf <esc>
 inoremap <c-e> <esc>A
 inoremap <c-u> <esc>gUaWEa
@@ -162,11 +169,12 @@ onoremap in} :<c-u>normal! f{vi{<cr>
 omap inB in{
 
 " }}}
-" AUTOCOMMAND GROUPING ---------------------------------------------------- {{{
+" AUTOCOMMANDS ------------------------------------------------------------ {{{
 " Vimscript file settings ------------------------------------------------- {{{
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim setlocal foldlevelstart=0
 augroup end
 " }}} 
 
