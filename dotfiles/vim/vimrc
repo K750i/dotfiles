@@ -33,10 +33,10 @@ call plug#end()
 " GENERAL ----------------------------------------------------------------- {{{
 filetype plugin indent on                       " Enable file type detection, loading of indent & plugin files
 runtime macros/matchit.vim                      " Extended matching with '%'
-syntax on					" turn on syntax highlighting
+syntax on				                                " turn on syntax highlighting
 set autoindent                                  " Copy indent to new line
 set backspace=indent,eol,start                  " Allow backspace in Insert Mode
-set cursorline					" highlight current line
+set cursorline                         					" highlight current line
 set encoding=utf8                               " Set utf8 as standard encoding and en_US as standard language
 set hidden                                      " Possibility to have more than one unsaved buffers
 set history=500                                 " Store a ton more history than default
@@ -50,13 +50,12 @@ set nojoinspaces                                " Prevents inserting two spaces 
 set novisualbell                                " Disable visual error indicator
 set hlsearch                                    " turn on search highlighting
 set noshowmode                                  " don't show vim's default status message
-set nowrap					" don't wrap long lines
+set nowrap					                            " don't wrap long lines
 set number                                      " Enable line numbering
-set relativenumber				" show line number relative to cursor
+set relativenumber				                      " show line number relative to cursor
 set scrolloff=3                                 " Keep cursor 3 lines above & below the screen when scrolling
 set sidescrolloff=10                            " Keep cursor 10 chars to the left or right when scrolling horizontally
 set smartcase                                   " Override 'ignorecase' if search contains uppercase characters.
-set softtabstop=2 shiftwidth=2 expandtab	" 2 tab sizes and always use spaces instead of tabs
 set splitbelow                                  " Put new split window on the bottom of current window
 set splitright                                  " Put new split window on the right of current window
 set wildmenu                                    " Visual autocomplete for command menu
@@ -185,4 +184,21 @@ augroup configgroup
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end
 " }}}
+
+au BufNewFile,BufRead *.py
+  \ set tabstop=4
+  \ softtabstop=4
+  \ shiftwidth=4
+  \ textwidth=79
+  \ expandtab
+  \ fileformat=unix
+
+highlight BadWhitespace ctermbg=red guibg=gray
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+
+au BufNewFile,BufRead *.js,*.html,*.css
+  \ set tabstop=2
+  \ softtabstop=2
+  \ shiftwidth=2
+
 " }}}
