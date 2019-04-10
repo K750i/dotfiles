@@ -139,6 +139,9 @@ nmap <leader>ds :sp %%
 nmap <leader>dv :vsp %%
 nmap <leader>dt :tabe %%
 
+"Run python script
+nnoremap <leader>py :w !python<cr>
+
 nnoremap <silent> <cr> :<c-u>nohlsearch<cr><c-l>
 " Buffer operations
 nnoremap <space><space> <c-^>
@@ -155,7 +158,7 @@ nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
 nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 inoremap wf <esc>
 inoremap <c-e> <esc>A
-inoremap <c-u> <esc>gUaWEa
+inoremap <c-u> <esc>gUawEa
 
 "Make operation pending commands for parentheses, brackets & braces easier
 onoremap in( :<c-u>normal! f(vi(<cr>
@@ -192,9 +195,6 @@ au BufNewFile,BufRead *.py
   \ textwidth=79
   \ expandtab
   \ fileformat=unix
-
-highlight BadWhitespace ctermbg=red guibg=gray
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.js,*.html,*.css
   \ set tabstop=2
