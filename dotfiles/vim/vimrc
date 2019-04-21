@@ -16,6 +16,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'jacoborus/tender.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim', {'for': ['html', 'css', 'javascript']}
@@ -90,18 +91,14 @@ endif
 
 " }}} 
 " COLOR SCHEME ------------------------------------------------------------ {{{
-" THEME ------------------------------------------------------------------- {{{
-colorscheme palenight
-set background=dark
+" colorscheme palenight
+" set background=dark 
+" let g:material_theme_sytle = 'palenight'
+" let g:material_terminal_italics = 1
+" let g:lightline = {'colorscheme': 'wombat'}
 
-let g:material_theme_sytle = 'palenight'
-let g:material_terminal_italics = 1
-
-" }}}
-" LIGHTLINE --------------------------------------------------------------- {{{
-let g:lightline = {'colorscheme': 'wombat'}
-
-" }}}
+colorscheme tender 
+let g:lightline = {'colorscheme': 'tender'}
 " }}}
 " NETRW ------------------------------------------------------------------- {{{
 " CHECK *netrw-browse-maps* FOR MAPPINGS
