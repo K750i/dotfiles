@@ -129,6 +129,7 @@ nmap <leader>ce :source ~/Documents/code/dotfiles/vim/vimrc<cr>
 nmap <leader>s :w<cr>
 nmap <leader>q :q<cr>
 nmap <leader>fn :find<space>
+nmap <leader>te :tabnew<cr>:term<cr>
 
 nmap <leader>dd :e<space>
 nmap <leader>dw :e %%
