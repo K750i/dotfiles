@@ -160,6 +160,7 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 inoremap wf <esc>
 inoremap <c-e> <esc>A
 inoremap <c-u> <esc>gUawEa
+inoremap <c-d> <esc>o
 
 "Make operation pending commands for parentheses, brackets & braces easier
 onoremap in( :<c-u>normal! f(vi(<cr>
