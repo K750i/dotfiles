@@ -122,6 +122,10 @@ let g:prettier#exec_cmd_async = 1
 let g:UltiSnipsEditSplit = 'vertical'
 
 " }}}
+" VIMTEX --------------------------------------------------------------- {{{
+let g:tex_flavor = 'latex'
+
+" }}}
 " MAPPINGS ---------------------------------------------------------------- {{{
 " expands the path to the active buffer with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -141,7 +145,7 @@ nmap <leader>dv :vsp %%
 nmap <leader>dt :tabe %%
 
 "Run python script
-nnoremap <leader>py :w !python<cr>
+nnoremap <leader>py :w !python3<cr>
 
 nnoremap <silent> <cr> :<c-u>nohlsearch<cr><c-l>
 " Buffer operations
@@ -194,11 +198,10 @@ au BufNewFile,BufRead *.py
   \ set tabstop=4
   \ softtabstop=4
   \ shiftwidth=4
-  \ textwidth=79
   \ expandtab
   \ fileformat=unix
 
-au BufNewFile,BufRead *.js,*.html,*.css
+au BufNewFile,BufRead *.js,*.html,*.css,*.tex
   \ set tabstop=2
   \ softtabstop=2
   \ shiftwidth=2
